@@ -1,0 +1,98 @@
+# Environment, at the versions Table A3 records
+/.venv/
+
+# Python residue
+__pycache__/
+*.py[cod]
+
+# Working copies of the pre-B16 artifacts, in the project root where the code
+# reads them. Anchored to the root with a leading slash, so these patterns do
+# not reach the published copies in artifacts/, which are committed. See the
+# note at the foot of this file.
+/population.npz
+/dataset.npz
+/split.npz
+/flag_assignment.npz
+/normalization.npz
+/standardization.npz
+/avian_signature.npz
+/conditioning.npz
+/surrogate_ensemble.pt
+
+# Models and step records written by the retained drivers
+/committed_model.pt
+/control_model.pt
+/b17_selection.json
+/b18_gate.json
+/b19_gates.json
+/b20_truncation.json
+/b21_paired_yield.json
+/b23_evaluation.json
+/b24_analysis.json
+/b25_metrics.json
+/committed_training_history.json
+
+# Progress and console records written during long runs
+/b07_labelling_progress.jsonl
+/b23_evaluation_progress.jsonl
+/b25_condition_blind_progress.jsonl
+/b23_run_console.log
+/b25_run_console.log
+
+# Generated results and directories
+/RESULTS.txt
+/sweep/
+
+# figures/ is NOT ignored. PAPER.md prints the path of each of its ten figures
+# in the caption, so a reader holding the article must find those files in a
+# fresh clone. They are regenerable by run_figures.py, and they are committed
+# anyway because the article cites them by name. 2.0 MB, PDF and 200 dpi PNG.
+
+# Solver working directories
+/_stage/
+/_scratch/
+
+# Solver, obtained separately by the user, never uploaded
+/XFOIL6.99/
+
+# Author's working document. It classifies every file in this repository into
+# COMMIT, GENERATED, EXTERNAL, EXCLUDED and ABSENT, and records the corrections
+# made while aligning the repository with the article. A reader of the
+# repository does not need it: README.md carries the run procedure and
+# seeds/SOURCES.md carries the seed attribution.
+/REPO_MANIFEST.md
+
+# Tooling configuration, not part of the study
+/.claude/
+
+# EXCLUDED. Present in the working directory and deliberately not published.
+# The superseded 63,000 word draft and its parts. Its section, table and figure
+# numbering contradicts PAPER.md throughout, so publishing it would put two
+# incompatible numbering schemes in one repository.
+/Paper_Full.md
+/Paper_1_Introduction.md
+/Paper_2_Method.md
+/Paper_3_Results.md
+/Paper_4_Discussion.md
+/Paper_5_Limitations_FutureWork_Conclusion.md
+/APPENDIX_REPRODUCIBILITY.md
+
+# Working records, not referenced by the article
+/BUILD_LOG.md
+/Writing_Flag.txt
+
+# Writing material: the ten literature scans, the plans and registers, the old
+# outlines, and the superseded build's generator. The one item the article
+# requires from here, the issued pre-registration, is published at the root as
+# PRE_REGISTRATION.md.
+/Reference Files/
+
+# ---------------------------------------------------------------------------
+# The pre-B16 archive is published, so the repository is runnable from B16
+# onward. artifacts/ holds the same ten files as the ignored root copies
+# above, byte for byte. Nothing here excludes it, and the explicit exception
+# below keeps it that way if a pattern above is ever unanchored.
+# artifacts/README.md records what each file is and lists a SHA-256 for each.
+# ---------------------------------------------------------------------------
+!artifacts/
+!artifacts/**
