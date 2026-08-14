@@ -1,0 +1,45 @@
+# Python 3.14.6, MSC v.1944, 64 bit AMD64. CPU only.
+#
+# Table A3 of PAPER.md records Python, numpy, torch and matplotlib. The
+# remaining pins below are read from the environment the reported runs were
+# made in, not looked up and not chosen.
+#
+# torch is recorded in Table A3 as 2.13.0+cpu. Its installed distribution
+# metadata reports 2.13.0; the local version suffix appears in
+# torch.__version__ and identifies the CPU build. The +cpu wheel does not
+# resolve from the default package index, and the article does not record the
+# index or the install command that was used, so that is not stated here
+# either. Install torch first, from wherever you obtain the CPU build, then
+# install the rest of this file.
+
+# Locked implementation stack
+numpy==2.5.1
+torch==2.13.0
+
+# torch's own dependency set
+filelock==3.32.2
+fsspec==2026.7.0
+Jinja2==3.1.6
+MarkupSafe==3.0.3
+mpmath==1.3.0
+networkx==3.6.1
+setuptools==83.0.0
+sympy==1.14.0
+typing_extensions==4.16.0
+
+# Figures only. Used by run_figures.py and by no pipeline module.
+matplotlib==3.11.1
+contourpy==1.3.3
+cycler==0.12.1
+fonttools==4.63.0
+kiwisolver==1.5.0
+packaging==26.3
+pillow==12.3.0
+pyparsing==3.3.2
+python-dateutil==2.9.0.post0
+six==1.17.0
+
+# No scipy, and none should be added. The two-sample Kolmogorov-Smirnov
+# statistic is written out by hand in dataset.ks_two_sample because none is
+# installed. If an import of scipy ever succeeds, the environment has drifted
+# from the one the reported runs were made in.

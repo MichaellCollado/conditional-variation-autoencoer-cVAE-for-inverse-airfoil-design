@@ -1,0 +1,30 @@
+# The LAST matching pattern wins, so the general default comes first and every
+# specific override follows it.
+* text=auto
+
+# Binary payloads.
+*.pdf   binary
+*.png   binary
+*.npz   binary
+*.pt    binary
+
+# The whole published archive checks out byte-for-byte on every platform.
+#
+# Two separate failures this prevents, both found by cloning the pushed branch
+# and running the check at README section 5.2 against it.
+#
+#   b07_labelling_progress.jsonl is text and artifacts/SHA256SUMS records its
+#   hash. Line-ending normalisation would change the bytes and the hash with
+#   them, so the check would fail on any platform whose native ending differs
+#   from the one it was committed on.
+#
+#   SHA256SUMS is itself text. Normalised to CRLF on checkout, every filename
+#   in it acquires a trailing carriage return and sha256sum -c cannot open a
+#   single one of the files it lists.
+artifacts/**  -text
+
+# The five seed coordinate files are locked inputs and are already published in
+# this repository. Store them exactly as they are on disk, which is byte-for-byte
+# what is already committed, so they never appear in a diff as changed when they
+# have not changed.
+seeds/*.dat  -text
